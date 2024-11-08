@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID-19 API Interface</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>COVID-19 API Interface</h1>
+        
+        <section id="covid-cases">
+            <h2>COVID-19 Cases</h2>
+            <form id="getCasesForm">
+                <label for="region">Enter Region:</label>
+                <input type="text" id="region" name="region" placeholder="e.g., state or city" required>
+                <button type="button" onclick="getCovidCases()">Get COVID Cases</button>
+            </form>
+            <div id="casesResult"></div>
+        </section>
+
+        <section id="update-cases">
+            <h2>Update COVID-19 Cases</h2>
+            <form id="updateCasesForm">
+                <label for="updateRegion">Region:</label>
+                <input type="text" id="updateRegion" name="updateRegion" required>
+                <label for="newCases">New Cases:</label>
+                <input type="number" id="newCases" name="newCases" required>
+                <button type="button" onclick="updateCovidCases()">Update Cases</button>
+            </form>
+            <div id="updateResult"></div>
+        </section>
+
+        <section id="vaccination-status">
+            <h2>Vaccination Status</h2>
+            <button type="button" onclick="getVaccinationStatus()">Get Vaccination Status</button>
+            <div id="vaccinationResult"></div>
+        </section>
+
+        <section id="hospital-resources">
+            <h2>Hospital Resources</h2>
+            <button type="button" onclick="getHospitalResources()">Get Hospital Resources</button>
+            <div id="resourcesResult"></div>
+        </section>
+
+        <section id="update-resources">
+            <h2>Update Hospital Resources</h2>
+            <form id="updateResourcesForm">
+                <label for="resourceRegion">Region:</label>
+                <input type="text" id="resourceRegion" name="resourceRegion" required>
+                <label for="beds">Beds Available:</label>
+                <input type="number" id="beds" name="beds" required>
+                <label for="ventilators">Ventilators Available:</label>
+                <input type="number" id="ventilators" name="ventilators" required>
+                <button type="button" onclick="updateHospitalResources()">Update Resources</button>
+            </form>
+            <div id="updateResourceResult"></div>
+        </section>
+    </div>
+
+    <script>
+        // Function to simulate fetching COVID cases data
+        function getCovidCases() {
+            const region = document.getElementById("region").value;
+            document.getElementById("casesResult").innerHTML = `
+                <p>COVID-19 Data for ${region}:</p>
+                <ul>
+                    <li>Active Cases: 1200</li>
+                    <li>Recoveries: 3000</li>
+                    <li>Deaths: 150</li>
+                </ul>
+            `;
+        }
+
+        // Function to simulate updating COVID cases data
+        function updateCovidCases() {
+            const region = document.getElementById("updateRegion").value;
+            const newCases = document.getElementById("newCases").value;
+            document.getElementById("updateResult").innerHTML = `
+                <p>Successfully updated COVID-19 cases for ${region}. New cases: ${newCases}</p>
+            `;
+        }
+
+        // Function to simulate fetching vaccination status data
+        function getVaccinationStatus() {
+            document.getElementById("vaccinationResult").innerHTML = `
+                <p>Vaccination Progress:</p>
+                <ul>
+                    <li>Doses Given: 500,000</li>
+                    <li>Population Vaccinated: 70%</li>
+                </ul>
+            `;
+        }
+
+        // Function to simulate fetching hospital resources data
+        function getHospitalResources() {
+            document.getElementById("resourcesResult").innerHTML = `
+                <p>Hospital Resources:</p>
+                <ul>
+                    <li>Beds Available: 150</li>
+                    <li>Ventilators Available: 20</li>
+                    <li>ICU Capacity: 80%</li>
+                </ul>
+            `;
+        }
+
+        // Function to simulate updating hospital resources data
+        function updateHospitalResources() {
+            const region = document.getElementById("resourceRegion").value;
+            const beds = document.getElementById("beds").value;
+            const ventilators = document.getElementById("ventilators").value;
+            document.getElementById("updateResourceResult").innerHTML = `
+                <p>Successfully updated hospital resources for ${region}.</p>
+                <p>Beds Available: ${beds}</p>
+                <p>Ventilators Available: ${ventilators}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
